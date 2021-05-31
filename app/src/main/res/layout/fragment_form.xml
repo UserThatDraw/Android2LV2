@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@color/skin_domosed"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.FormFragment">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:text="Task creator"
+        android:gravity="center"
+        android:textSize="50dp"
+        android:textColor="@color/black"
+        android:layout_marginBottom="20dp"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/text_et"
+        android:hint="Text"
+        android:textColor="@color/black"
+
+        android:layout_marginHorizontal="19dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <EditText
+        android:id="@+id/desc_et"
+        android:hint="Description"
+        android:layout_marginTop="10sp"
+        android:textColor="@color/black"
+
+        android:layout_marginHorizontal="19dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+    <Button
+        android:id="@+id/save_btn"
+        android:text="Save"
+        android:layout_marginTop="10sp"
+        android:layout_marginHorizontal="19dp"
+        android:backgroundTint="@color/orange"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>
