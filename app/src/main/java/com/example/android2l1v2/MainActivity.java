@@ -26,8 +26,8 @@ public class MainActivity extends AppCompatActivity {
     private ActivityMainBinding binding;
 
     ImageView imageV;
-   // private int PICK_IMAGE = 100;
-   // Uri imageUri;
+    private int PICK_IMAGE = 100;
+    Uri imageUri;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,7 +58,10 @@ public class MainActivity extends AppCompatActivity {
                 navController.navigate(R.id.action_nav_home_to_formFragment);
             }
         });
-        /*
+
+        View headerview = navigationView.getHeaderView(0);
+        imageV = (ImageView) headerview.findViewById(R.id.imageView);
+
         imageV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -66,9 +69,9 @@ public class MainActivity extends AppCompatActivity {
                 startActivityForResult(intent, PICK_IMAGE);
             }
         });
-        */
+
     }
-    /*
+
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
@@ -77,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
             imageV.setImageURI(imageUri);
         }
     }
-    */
+
 
     @Override
     public boolean onSupportNavigateUp() {
