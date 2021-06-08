@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".OnBoardItemFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:id="@+id/item_image_img"
+        android:layout_marginTop="120sp"
+        app:lottie_rawRes="@raw/find"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="20sp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="true"
+        android:layout_height="200dp"/>
+
+    <TextView
+        android:id="@+id/item_title_txt"
+        android:text="Title"
+        android:layout_below="@id/item_image_img"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20sp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textStyle="bold"
+        android:textSize="40sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+
+    <TextView
+        android:id="@+id/item_desc_txt"
+        android:layout_below="@id/item_title_txt"
+        android:layout_centerHorizontal="true"
+        android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."
+        android:fontFamily="sans-serif-condensed-medium"
+        android:textStyle="bold"
+        android:gravity="center"
+        android:textSize="20sp"
+        android:layout_width="match_parent"
+        android:layout_marginHorizontal="20sp"
+        android:layout_height="wrap_content"/>
+
+</RelativeLayout>

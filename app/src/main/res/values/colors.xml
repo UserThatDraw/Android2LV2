@@ -7,9 +7,16 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
-    <color name="carrot">#FFB4A2</color>
-    <color name="skin_domosed">#FFE6DA</color>
-    <color name="carrot_half">#FFA891</color>
-    <color name="orange">#FF8300</color>
-    <color name="peach">#FFB15E</color>
+    <color name="blue">#A2C4FF</color>
+    <color name="clear_sky">#DAF5FF</color>
+    <color name="mid_day">#91D3FF</color>
+    <color name="deep_blue">#007BFF</color>
+    <color name="little_wave">#5E99FF</color>
+    <color name="orange">#FFC063</color>
+    <color name="peach">#FFD290</color>
+    <color name="cherry">#FF5499</color>
+    <color name="strawberry">#FF3385</color>
+    <color name="gary_day">#CFCFCF</color>
+    <color name="rainy_weather">#A3A3A3</color>
+
 </resources>

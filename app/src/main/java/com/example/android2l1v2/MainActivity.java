@@ -1,10 +1,14 @@
 package com.example.android2l1v2;
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
+import android.provider.MediaStore;
 import android.view.View;
 import android.view.Menu;
+import android.widget.ImageView;
 
-import com.google.android.material.snackbar.Snackbar;
 import com.google.android.material.navigation.NavigationView;
 
 import androidx.navigation.NavController;
@@ -21,9 +25,15 @@ public class MainActivity extends AppCompatActivity {
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
 
+    ImageView imageV;
+   // private int PICK_IMAGE = 100;
+   // Uri imageUri;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        imageV = findViewById(R.id.imageView);
 
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
@@ -47,15 +57,26 @@ public class MainActivity extends AppCompatActivity {
                 navController.navigate(R.id.action_nav_home_to_formFragment);
             }
         });
+        /*
+        imageV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
+                startActivityForResult(intent, PICK_IMAGE);
+            }
+        });
+        */
     }
-   // Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-   //         .setAction("Action", null).show();
+    /*
     @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main, menu);
-        return true;
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE){
+            imageUri = data.getData();
+            imageV.setImageURI(imageUri);
+        }
     }
+    */
 
     @Override
     public boolean onSupportNavigateUp() {

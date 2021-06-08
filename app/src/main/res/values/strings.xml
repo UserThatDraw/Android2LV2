@@ -6,10 +6,24 @@
     <string name="nav_header_subtitle">https://github.com/UserThatDraw?tab=repositories</string>
     <string name="nav_header_desc">Navigation header</string>
     <string name="action_settings">Settings</string>
+    <string name="action_grid">Grid/Line</string>
+
 
     <string name="menu_home">Task list</string>
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="todo">TODO</string>
+    <string name="task_searcher">Task searcher</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
+    <string name="task_creator">Task creator</string>
+    <string name="text">Text</string>
+    <string name="description_txt">Description</string>
+    <string name="save">Save</string>
+    <string name="save_blue">Save blue</string>
+    <string name="save_red">Save red</string>
+    <string name="save_orange">Save orange</string>
+    <string name="save_gray">Save gray</string>
 </resources>

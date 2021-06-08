@@ -10,18 +10,21 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.android2l1v2.R;
 import com.example.android2l1v2.TaskModel;
+import com.example.android2l1v2.ui.OnClickInterface;
 
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class HomeAdapter extends RecyclerView.Adapter <HomeAdapter.ViewHolder> {
-
+    public OnClickInterface onClickInterface;
+    private ArrayList<TaskModel> sourse;
     private final ArrayList<TaskModel> list = new ArrayList<>();
 
-    public void addModel(TaskModel model){
+    public void addModel(TaskModel model, OnClickInterface onClickInterface) {
+        this.onClickInterface = onClickInterface;
         list.add(model);
+        sourse = list;
         notifyDataSetChanged();
     }
 
@@ -54,19 +57,11 @@ public class HomeAdapter extends RecyclerView.Adapter <HomeAdapter.ViewHolder> {
         }
 
         public void onBind(TaskModel model) {
+            itemView.setOnClickListener(v -> {
+                onClickInterface.onItemClick(getAdapterPosition(), model);
+            });
             title.setText(model.getTitle());
             desc.setText(model.getDesc());
         }
     }
 }
-
-
-
-
-
-
-
-
-
-
-

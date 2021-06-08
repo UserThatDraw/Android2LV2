@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:padding="10dp">
 
@@ -10,9 +9,9 @@
         android:id="@+id/title_item"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Title"
+        android:text="@string/title"
         android:background="@drawable/style_top"
-        android:backgroundTint="@color/carrot"
+        android:backgroundTint="@color/blue"
         android:textSize="22sp" />
 
     <TextView
@@ -20,8 +19,8 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="@drawable/style_bottom"
-        android:backgroundTint="@color/carrot_half"
-        android:text="Description"
+        android:backgroundTint="@color/mid_day"
+        android:text="@string/description"
         android:textSize="18sp" />
 
 </LinearLayout>
