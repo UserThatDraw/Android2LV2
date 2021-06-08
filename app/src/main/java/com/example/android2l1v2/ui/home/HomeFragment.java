@@ -36,9 +36,6 @@ public class HomeFragment extends Fragment implements OnClickInterface {
     private FragmentHomeBinding binding;
     HomeAdapter adapter;
     Boolean isList = false;
-   /* ImageView imageV;
-    private int PICK_IMAGE = 100;
-    Uri imageUri; */
 
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
@@ -68,30 +65,12 @@ public class HomeFragment extends Fragment implements OnClickInterface {
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-       /* imageV = root.findViewById(R.id.imageView);
-        imageV.setOnClickListener(new View.OnClickListener() {
-            @SuppressWarnings("deprecation")
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_PICK, MediaStore.Images.Media.INTERNAL_CONTENT_URI);
-                startActivityForResult(intent, PICK_IMAGE);
-            }
-        }); */
 
         initRec();
         getDataForm();
         return root;
     }
-    /*
-    @SuppressWarnings("deprecation")
-    @Override
-    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (resultCode == RESULT_OK && requestCode == PICK_IMAGE){
-            imageUri = data.getData();
-            imageV.setImageURI(imageUri);
-        }
-    }*/
+
 
     private void getDataForm() {
         getParentFragmentManager().setFragmentResultListener("rv_model", getViewLifecycleOwner(),
