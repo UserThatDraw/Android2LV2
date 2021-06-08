@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/skin_domosed"
     android:layout_height="match_parent"
     tools:context=".OnBoardActivity">
 
@@ -13,7 +13,9 @@
 
     <Button
         android:id="@+id/btn_skip"
-        android:text="Skip"
+        android:backgroundTint="@color/orange"
+        android:textColor="@color/black"
+        android:text="@string/skip"
         android:layout_alignParentRight="true"
         android:layout_margin="16sp"
         android:layout_alignParentTop="true"
@@ -22,7 +24,9 @@
 
     <Button
         android:id="@+id/btn_start"
-        android:text="Start"
+        android:text="@string/start"
+        android:backgroundTint="@color/orange"
+        android:textColor="@color/black"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="20sp"

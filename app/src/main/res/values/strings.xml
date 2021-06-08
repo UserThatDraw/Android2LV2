@@ -26,4 +26,7 @@
     <string name="save_red">Save red</string>
     <string name="save_orange">Save orange</string>
     <string name="save_gray">Save gray</string>
+    <string name="skip">Skip</string>
+    <string name="start">Start</string>
+    <string name="title">Title</string>
 </resources>

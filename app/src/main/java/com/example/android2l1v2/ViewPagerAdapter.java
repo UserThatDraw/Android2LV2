@@ -5,9 +5,6 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentStatePagerAdapter;
 
-import com.example.android2l1v2.OnBoardItemFragment;
-import com.example.android2l1v2.OnBoardModel;
-
 import java.util.ArrayList;
 import java.util.List;
 
