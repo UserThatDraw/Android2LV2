@@ -11,6 +11,8 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.example.android2l1v2.ui.home.HomeFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -25,7 +27,7 @@ public class OnBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_board);
 
-        checkShowOnBoard();
+      //  checkShowOnBoard();
 
         pager = findViewById(R.id.vp_onboard);
         btnStart = findViewById(R.id.btn_start);
