@@ -3,10 +3,8 @@ package com.example.android2l1v2;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.view.View;
-import android.view.Menu;
 import android.widget.ImageView;
 
 import com.google.android.material.navigation.NavigationView;
@@ -24,7 +22,6 @@ public class MainActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
     private ActivityMainBinding binding;
-
     ImageView imageV;
     private int PICK_IMAGE = 100;
     Uri imageUri;
@@ -60,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         });
 
         View headerview = navigationView.getHeaderView(0);
-        imageV = (ImageView) headerview.findViewById(R.id.imageView);
+        imageV = headerview.findViewById(R.id.imageView);
 
         imageV.setOnClickListener(new View.OnClickListener() {
             @Override

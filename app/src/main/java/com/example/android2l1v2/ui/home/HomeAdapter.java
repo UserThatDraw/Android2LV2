@@ -15,18 +15,23 @@ import com.example.android2l1v2.ui.OnClickInterface;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class HomeAdapter extends RecyclerView.Adapter <HomeAdapter.ViewHolder> {
     public OnClickInterface onClickInterface;
-    private ArrayList<TaskModel> sourse;
-    private final ArrayList<TaskModel> list = new ArrayList<>();
+    private ArrayList<TaskModel> list = new ArrayList<>();
 
     public void addModel(TaskModel model, OnClickInterface onClickInterface) {
         this.onClickInterface = onClickInterface;
         list.add(model);
-        sourse = list;
         notifyDataSetChanged();
     }
+
+    public void addListOfModel(List<TaskModel>list){
+        this.list.addAll(list);
+        notifyDataSetChanged();
+    }
+
 
     @NonNull
     @NotNull
@@ -44,6 +49,12 @@ public class HomeAdapter extends RecyclerView.Adapter <HomeAdapter.ViewHolder> {
     @Override
     public int getItemCount() {
         return list.size();
+    }
+
+    public void filteredList(ArrayList<TaskModel>filteredList){
+        list = filteredList;
+        notifyDataSetChanged();
+
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {

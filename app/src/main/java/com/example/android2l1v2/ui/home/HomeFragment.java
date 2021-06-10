@@ -1,16 +1,15 @@
 package com.example.android2l1v2.ui.home;
 
-import android.content.Intent;
-import android.net.Uri;
 import android.os.Bundle;
-import android.provider.MediaStore;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
+import android.widget.EditText;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -21,6 +20,7 @@ import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.StaggeredGridLayoutManager;
 
+import com.example.android2l1v2.App;
 import com.example.android2l1v2.R;
 import com.example.android2l1v2.TaskModel;
 import com.example.android2l1v2.databinding.FragmentHomeBinding;
@@ -28,7 +28,8 @@ import com.example.android2l1v2.ui.OnClickInterface;
 
 import org.jetbrains.annotations.NotNull;
 
-import static android.app.Activity.RESULT_OK;
+import java.util.ArrayList;
+import java.util.List;
 
 public class HomeFragment extends Fragment implements OnClickInterface {
 
@@ -36,6 +37,7 @@ public class HomeFragment extends Fragment implements OnClickInterface {
     private FragmentHomeBinding binding;
     HomeAdapter adapter;
     Boolean isList = false;
+    private List<TaskModel> modelList = new ArrayList<>();
 
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
@@ -67,8 +69,43 @@ public class HomeFragment extends Fragment implements OnClickInterface {
         View root = binding.getRoot();
 
         initRec();
+        getDataFromRoom();
         getDataForm();
+        EditText editText = root.findViewById(R.id.search_et);
+        editText.addTextChangedListener(new TextWatcher() {
+            @Override
+            public void beforeTextChanged(CharSequence s, int start, int count, int after) {
+
+            }
+
+            @Override
+            public void onTextChanged(CharSequence s, int start, int before, int count) {
+
+            }
+
+            @Override
+            public void afterTextChanged(Editable s) {
+                filter(s.toString());
+            }
+        });
         return root;
+    }
+    private void filter (String text){
+        ArrayList<TaskModel> filteredList = new ArrayList<>();
+
+        for (TaskModel model : App.getInstance().getTaskDao().getAll()){
+            if (model.getTitle().toLowerCase().contains(text.toLowerCase())){
+                filteredList.add(model);
+            }
+        }
+        adapter.filteredList(filteredList);
+    }
+
+    private void getDataFromRoom() {
+        modelList = App.getInstance().getTaskDao().getAll();
+        if (modelList != null) {
+            adapter.addListOfModel(modelList);
+        }
     }
 
 
@@ -80,6 +117,7 @@ public class HomeFragment extends Fragment implements OnClickInterface {
                         TaskModel model = (TaskModel) result.getSerializable("model");
                         if (model != null) {
                             adapter.addModel(model, HomeFragment.this);
+                            App.getInstance().getTaskDao().insertAll(model);
                         }
                     }
                 });

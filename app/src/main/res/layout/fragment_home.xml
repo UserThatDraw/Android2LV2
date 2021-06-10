@@ -16,18 +16,8 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
+        android:padding="20dp"
         android:hint="@string/task_searcher" />
-
-    <ImageButton
-        android:id="@+id/search_btn"
-        android:src="@drawable/ic_baseline_search_24"
-        android:layout_width="40sp"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/rec_view"
-        app:layout_constraintLeft_toRightOf="@id/search_et"
-        android:layout_height="40sp"
-        android:background="@color/mid_day"
-        android:contentDescription="@string/todo" />
 
 <androidx.recyclerview.widget.RecyclerView
     android:id="@+id/rec_view"
