@@ -11,6 +11,7 @@ import android.widget.Button;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
+import com.airbnb.lottie.LottieAnimationView;
 import com.example.android2l1v2.ui.home.HomeFragment;
 
 import java.util.ArrayList;
@@ -52,6 +53,7 @@ public class OnBoardActivity extends AppCompatActivity {
                 if (position == 2){
                     btnStart.setVisibility(View.VISIBLE);
                     btnSkip.setVisibility(View.GONE);
+
                 }else{
                     btnStart.setVisibility(View.GONE);
                     btnSkip.setVisibility(View.VISIBLE);

@@ -10,6 +10,8 @@ import android.widget.TextView;
 
 import androidx.fragment.app.Fragment;
 
+import com.airbnb.lottie.LottieAnimationView;
+
 public class OnBoardItemFragment extends Fragment {
 
     private static final String ARG_PARAM1 = "param1";
@@ -21,7 +23,7 @@ public class OnBoardItemFragment extends Fragment {
     private int image;
 
     private TextView tvTitle, tvDesc;
-    private ImageView ivImage;
+    private LottieAnimationView ivImage;
 
     public OnBoardItemFragment() {
         // Required empty public constructor
@@ -61,6 +63,6 @@ public class OnBoardItemFragment extends Fragment {
     private void setData() {
         tvTitle.setText(title);
         tvDesc.setText(descr);
-        ivImage.setImageResource(image);
+        ivImage.setAnimation(image);
     }
 }
