@@ -28,7 +28,7 @@ public class OnBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_on_board);
 
-      //  checkShowOnBoard();
+        checkShowOnBoard();
 
         pager = findViewById(R.id.vp_onboard);
         btnStart = findViewById(R.id.btn_start);
