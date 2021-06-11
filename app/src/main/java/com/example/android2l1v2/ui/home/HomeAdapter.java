@@ -68,9 +68,9 @@ public class HomeAdapter extends RecyclerView.Adapter <HomeAdapter.ViewHolder> {
         }
 
         public void onBind(TaskModel model) {
-            itemView.setOnClickListener(v -> {
+          /*  itemView.setOnClickListener(v -> {
                 onClickInterface.onItemClick(getAdapterPosition(), model);
-            });
+            });*/
             title.setText(model.getTitle());
             desc.setText(model.getDesc());
         }

@@ -20,7 +20,7 @@
 
     <TextView
         android:id="@+id/item_title_txt"
-        android:text="@string/title"
+        android:text=""
         android:layout_below="@id/item_image_img"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="20sp"

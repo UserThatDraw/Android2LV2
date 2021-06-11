@@ -94,7 +94,7 @@ public class HomeFragment extends Fragment implements OnClickInterface {
         ArrayList<TaskModel> filteredList = new ArrayList<>();
 
         for (TaskModel model : App.getInstance().getTaskDao().getAll()){
-            if (model.getTitle().toLowerCase().contains(text.toLowerCase())){
+            if (model.getDesc().toLowerCase().contains(text.toLowerCase())){
                 filteredList.add(model);
             }
         }

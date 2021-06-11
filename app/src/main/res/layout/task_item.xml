@@ -10,16 +10,18 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/title"
+        android:textColor="@color/white"
         android:background="@drawable/style_top"
-        android:backgroundTint="@color/blue"
+        android:backgroundTint="@color/gray"
         android:textSize="22sp" />
 
     <TextView
         android:id="@+id/desc_item"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
+        android:layout_height="60dp"
+        android:textColor="@color/white"
         android:background="@drawable/style_bottom"
-        android:backgroundTint="@color/mid_day"
+        android:backgroundTint="@color/gray"
         android:text="@string/description"
         android:textSize="18sp" />
 
