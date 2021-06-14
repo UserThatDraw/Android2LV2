@@ -108,7 +108,6 @@ public class HomeFragment extends Fragment implements OnClickInterface {
         }
     }
 
-
     private void getDataForm() {
         getParentFragmentManager().setFragmentResultListener("rv_model", getViewLifecycleOwner(),
                 new FragmentResultListener() {
