@@ -8,6 +8,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.android2l1v2.App;
 import com.example.android2l1v2.R;
 import com.example.android2l1v2.TaskModel;
 import com.example.android2l1v2.ui.OnClickInterface;
@@ -17,17 +18,38 @@ import org.jetbrains.annotations.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-public class HomeAdapter extends RecyclerView.Adapter <HomeAdapter.ViewHolder> {
+public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     public OnClickInterface onClickInterface;
-    private ArrayList<TaskModel> list = new ArrayList<>();
+    private ArrayList<TaskModel> list;
+    private ArrayList<TaskModel> filteredData;
+    public boolean isList;
 
-    public void addModel(TaskModel model, OnClickInterface onClickInterface) {
+    public HomeAdapter(boolean isList, OnClickInterface onClickInterface) {
+        this.list = new ArrayList<>();
         this.onClickInterface = onClickInterface;
+        this.filteredData = new ArrayList<>();
+        this.isList = isList;
+    }
+
+    public void addModel(TaskModel model) {
         list.add(model);
+        filteredData.add(model);
         notifyDataSetChanged();
     }
 
-    public void addListOfModel(List<TaskModel>list){
+    public void deleteModel(int pos) {
+        App.getInstance().getTaskDao().deleteTask(list.get(pos));
+        list.remove(pos);
+        notifyItemRemoved(pos);
+
+    }
+
+    public void updateModel(int pos, TaskModel model) {
+        list.set(pos, model);
+        notifyItemChanged(pos);
+    }
+
+    public void addListOfModel(List<TaskModel> list) {
         this.list.addAll(list);
         notifyDataSetChanged();
     }
@@ -37,7 +59,7 @@ public class HomeAdapter extends RecyclerView.Adapter <HomeAdapter.ViewHolder> {
     @NotNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull @NotNull ViewGroup parent, int viewType) {
-        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_item,parent,false);
+        View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.task_item, parent, false);
         return new ViewHolder(view);
     }
 
@@ -51,7 +73,7 @@ public class HomeAdapter extends RecyclerView.Adapter <HomeAdapter.ViewHolder> {
         return list.size();
     }
 
-    public void filteredList(ArrayList<TaskModel>filteredList){
+    public void filteredList(ArrayList<TaskModel> filteredList) {
         list = filteredList;
         notifyDataSetChanged();
 
@@ -68,11 +90,21 @@ public class HomeAdapter extends RecyclerView.Adapter <HomeAdapter.ViewHolder> {
         }
 
         public void onBind(TaskModel model) {
-          /*  itemView.setOnClickListener(v -> {
-                onClickInterface.onItemClick(getAdapterPosition(), model);
-            });*/
             title.setText(model.getTitle());
             desc.setText(model.getDesc());
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    onClickInterface.onItemClick(getAdapterPosition(), model);
+                }
+            });
+            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+                @Override
+                public boolean onLongClick(View v) {
+                    onClickInterface.onLongItemClick(getAdapterPosition());
+                    return false;
+                }
+            });
         }
     }
 }

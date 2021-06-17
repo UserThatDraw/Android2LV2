@@ -19,9 +19,9 @@ public class App extends Application {
     public static AppDataBase getInstance(){
         if (instance == null) {
             instance = Room.
-                    databaseBuilder(context, AppDataBase.class, "task-database")
-                    .allowMainThreadQueries().fallbackToDestructiveMigration()
-                    .build();
+                    databaseBuilder(context, AppDataBase.class, "task-database").
+                    allowMainThreadQueries().fallbackToDestructiveMigration().
+                    build();
         }
         return instance;
     }

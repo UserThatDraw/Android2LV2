@@ -1,6 +1,5 @@
 package com.example.android2l1v2.ui.home;
 
-import android.annotation.SuppressLint;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -15,7 +14,6 @@ import android.widget.EditText;
 
 import com.example.android2l1v2.R;
 import com.example.android2l1v2.TaskModel;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class FormFragment extends Fragment {
 
@@ -42,7 +40,6 @@ public class FormFragment extends Fragment {
         }
     }
 
-    @SuppressLint("ResourceAsColor")
     private void initClick() {
 
         saveBlue.setOnClickListener(v -> {

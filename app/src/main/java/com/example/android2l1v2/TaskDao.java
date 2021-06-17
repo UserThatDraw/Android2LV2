@@ -16,5 +16,5 @@ public interface TaskDao {
     void insertAll(TaskModel... models);
 
     @Delete
-    void deletr(TaskModel model);
+    void deleteTask(TaskModel model);
 }

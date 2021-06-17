@@ -1,6 +1,5 @@
 package com.example.android2l1v2;
 
-import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -55,6 +54,7 @@ public class MainActivity extends AppCompatActivity {
                 binding.appBarMain.fab.show();
             }
         });
+
         NavigationUI.setupActionBarWithNavController(this, navController, mAppBarConfiguration);
         NavigationUI.setupWithNavController(navigationView, navController);
 
@@ -85,7 +85,6 @@ public class MainActivity extends AppCompatActivity {
             imageV.setImageURI(imageUri);
         }
     }
-
 
     @Override
     public boolean onSupportNavigateUp() {

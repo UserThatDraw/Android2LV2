@@ -36,22 +36,27 @@ public class HomeFragment extends Fragment implements OnClickInterface {
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
     HomeAdapter adapter;
-    Boolean isList = false;
+    private int position;
+    Boolean isList = true;
     private List<TaskModel> modelList = new ArrayList<>();
 
     @Override
     public boolean onOptionsItemSelected(@NonNull @NotNull MenuItem item) {
-        if (item.getItemId() == R.id.action_dashboard){
-            if (isList){
-                item.setIcon(R.drawable.ic_baseline_list_24);
-                binding.recView.setLayoutManager(new StaggeredGridLayoutManager(2,StaggeredGridLayoutManager.VERTICAL));
-                isList = false;
-            }else {
-                item.setIcon(R.drawable.ic_baseline_dashboard_24);
-                binding.recView.setLayoutManager(new LinearLayoutManager(getContext()));
-                isList = true;
+        item.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                if (isList) {
+                    item.setIcon(R.drawable.ic_baseline_list_24);
+                    binding.recView.setLayoutManager(new StaggeredGridLayoutManager(2, StaggeredGridLayoutManager.VERTICAL));
+                    isList = false;
+                } else {
+                    item.setIcon(R.drawable.ic_baseline_dashboard_24);
+                    binding.recView.setLayoutManager(new LinearLayoutManager(getContext()));
+                    isList = true;
+                }
+                return false;
             }
-        }
+        });
         return super.onOptionsItemSelected(item);
     }
 
@@ -59,10 +64,12 @@ public class HomeFragment extends Fragment implements OnClickInterface {
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         inflater.inflate(R.menu.main, menu);
         super.onCreateOptionsMenu(menu, inflater);
+
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
+        setHasOptionsMenu(true);
         homeViewModel = new ViewModelProvider(this).get(HomeViewModel.class);
 
         binding = FragmentHomeBinding.inflate(inflater, container, false);
@@ -90,11 +97,12 @@ public class HomeFragment extends Fragment implements OnClickInterface {
         });
         return root;
     }
-    private void filter (String text){
+
+    private void filter(String text) {
         ArrayList<TaskModel> filteredList = new ArrayList<>();
 
-        for (TaskModel model : App.getInstance().getTaskDao().getAll()){
-            if (model.getDesc().toLowerCase().contains(text.toLowerCase())){
+        for (TaskModel model : App.getInstance().getTaskDao().getAll()) {
+            if (model.getDesc().toLowerCase().contains(text.toLowerCase())) {
                 filteredList.add(model);
             }
         }
@@ -115,7 +123,7 @@ public class HomeFragment extends Fragment implements OnClickInterface {
                     public void onFragmentResult(@NonNull @NotNull String requestKey, @NonNull @NotNull Bundle result) {
                         TaskModel model = (TaskModel) result.getSerializable("model");
                         if (model != null) {
-                            adapter.addModel(model, HomeFragment.this);
+                            adapter.addModel(model);
                             App.getInstance().getTaskDao().insertAll(model);
                         }
                     }
@@ -123,7 +131,7 @@ public class HomeFragment extends Fragment implements OnClickInterface {
     }
 
     public void initRec() {
-        adapter = new HomeAdapter();
+        adapter = new HomeAdapter(isList, HomeFragment.this);
         binding.recView.setAdapter(adapter);
     }
 
@@ -135,15 +143,24 @@ public class HomeFragment extends Fragment implements OnClickInterface {
 
     @Override
     public void onItemClick(int position, TaskModel model) {
+        this.position = position;
         Bundle bundle = new Bundle();
         bundle.putSerializable("mod", model);
-
-        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_controller_view_tag);
+        NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main);
         navController.navigate(R.id.action_nav_home_to_formFragment, bundle);
     }
 
     @Override
     public void onLongItemClick(int position) {
-
+        this.position = position;
+        adapter.deleteModel(position);
     }
 }
+
+
+
+
+
+
+
+
