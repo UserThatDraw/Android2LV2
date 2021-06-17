@@ -15,6 +15,9 @@ import android.widget.EditText;
 import com.example.android2l1v2.R;
 import com.example.android2l1v2.TaskModel;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class FormFragment extends Fragment {
 
     EditText desc;
@@ -45,13 +48,15 @@ public class FormFragment extends Fragment {
         saveBlue.setOnClickListener(v -> {
             String tit = titleIt;
             String des = desc.getText().toString();
-            saverClick(tit, des);
+            SimpleDateFormat sdf = new SimpleDateFormat("dd.MM.yyyy HH:mm");
+            String date = sdf.format(new Date());
+            saverClick(tit, des, date);
         });
     }
 
-    private void saverClick(String tit, String des) {
+    private void saverClick(String tit, String des, String date) {
         if ( des.length() > 0) {
-            model = new TaskModel(tit, des);
+            model = new TaskModel(tit, des, date);
             Bundle bundle = new Bundle();
             bundle.putSerializable("model", model);
             getParentFragmentManager().setFragmentResult("rv_model", bundle);

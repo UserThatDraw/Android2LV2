@@ -8,12 +8,22 @@ import java.io.Serializable;
 public class TaskModel implements Serializable {
     @PrimaryKey(autoGenerate = true)
     private int id;
-    private String title, desc;
+    private String title, desc, time;
 
-    public TaskModel(String title, String desc) {
+    public String getTime() {
+        return time;
+    }
+
+    public void setTime(String time) {
+        this.time = time;
+    }
+
+    public TaskModel(String title, String desc, String time) {
         this.title = title;
         this.desc = desc;
+        this.time = time;
     }
+
     public int getId() {
         return id;
     }

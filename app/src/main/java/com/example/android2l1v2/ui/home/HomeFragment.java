@@ -36,7 +36,6 @@ public class HomeFragment extends Fragment implements OnClickInterface {
     private HomeViewModel homeViewModel;
     private FragmentHomeBinding binding;
     HomeAdapter adapter;
-    private int position;
     Boolean isList = true;
     private List<TaskModel> modelList = new ArrayList<>();
 
@@ -143,7 +142,6 @@ public class HomeFragment extends Fragment implements OnClickInterface {
 
     @Override
     public void onItemClick(int position, TaskModel model) {
-        this.position = position;
         Bundle bundle = new Bundle();
         bundle.putSerializable("mod", model);
         NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main);
@@ -152,7 +150,6 @@ public class HomeFragment extends Fragment implements OnClickInterface {
 
     @Override
     public void onLongItemClick(int position) {
-        this.position = position;
         adapter.deleteModel(position);
     }
 }

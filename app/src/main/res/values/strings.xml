@@ -25,4 +25,5 @@
     <string name="save_blue">Save</string>
     <string name="skip">Skip</string>
     <string name="start">Start</string>
+    <string name="_00_00_0000_00_00">00.00.0000 00:00</string>
 </resources>

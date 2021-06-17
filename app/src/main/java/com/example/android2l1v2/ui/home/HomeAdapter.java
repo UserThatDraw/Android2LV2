@@ -15,7 +15,9 @@ import com.example.android2l1v2.ui.OnClickInterface;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
@@ -81,15 +83,17 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView title, desc;
+        TextView title, desc, time;
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
             title = itemView.findViewById(R.id.title_item);
             desc = itemView.findViewById(R.id.desc_item);
+            time = itemView.findViewById(R.id.time_item);
         }
 
         public void onBind(TaskModel model) {
+            time.setText(model.getTime());
             title.setText(model.getTitle());
             desc.setText(model.getDesc());
             itemView.setOnClickListener(new View.OnClickListener() {
