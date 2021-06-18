@@ -59,6 +59,13 @@ public class HomeFragment extends Fragment implements OnClickInterface {
         return super.onOptionsItemSelected(item);
     }
 
+    public void onDestroy() {
+        super.onDestroy();
+        System.runFinalizersOnExit(true);
+        System.exit(0);
+
+    }
+
     @Override
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         inflater.inflate(R.menu.main, menu);
