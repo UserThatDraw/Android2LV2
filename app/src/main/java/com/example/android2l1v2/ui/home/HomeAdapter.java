@@ -55,7 +55,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         notifyDataSetChanged();
     }
 
-
     @NonNull
     @NotNull
     @Override
