@@ -3,24 +3,43 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/darkest_dark"
     tools:context=".ui.auth.AuthFragment">
+
+    <ImageView
+        android:layout_width="200dp"
+        android:layout_gravity="center_horizontal"
+        android:background="@drawable/image"
+        android:layout_marginTop="60dp"
+        android:layout_height="200dp"/>
 
     <LinearLayout
         android:id="@+id/cont_phone"
         android:layout_width="match_parent"
+        android:layout_gravity="center"
         android:orientation="vertical"
         android:layout_height="wrap_content">
+
         <EditText
             android:id="@+id/ed_form"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:hint="Input phone number"/>
+            android:textColor="@color/white"
+            android:padding="10dp"
+            android:background="@drawable/round"
+            android:textColorHint="@color/gary_day"
+            android:layout_marginHorizontal="50dp"
+            android:hint="@string/phone"/>
 
         <Button
             android:id="@+id/btn_sent_code"
             android:layout_gravity="top"
-            android:text="Отправить"
+            android:layout_marginHorizontal="100dp"
+            android:layout_marginTop="10dp"
+            android:backgroundTint="@color/orange"
+            android:text="@string/sent"
+            android:textColor="@color/black"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>
@@ -29,19 +48,29 @@
         android:id="@+id/cont_code"
         android:layout_width="match_parent"
         android:orientation="vertical"
+        android:layout_gravity="center"
         android:visibility="gone"
         android:layout_height="wrap_content">
+
         <EditText
             android:id="@+id/ed_for_code"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_gravity="top"
-            android:hint="Input sms code"/>
+            android:background="@drawable/round"
+            android:textColor="@color/white"
+            android:textColorHint="@color/gary_day"
+            android:layout_marginHorizontal="50dp"
+            android:hint="@string/enter_code"/>
 
         <Button
             android:id="@+id/btn_confirm"
             android:layout_gravity="top"
-            android:text="Подтвердить"
+            android:textColor="@color/black"
+            android:text="@string/confirm"
+            android:layout_marginTop="10dp"
+            android:layout_marginHorizontal="100dp"
+            android:backgroundTint="@color/orange"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
     </LinearLayout>

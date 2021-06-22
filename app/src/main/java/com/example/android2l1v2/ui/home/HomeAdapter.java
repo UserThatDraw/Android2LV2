@@ -43,7 +43,6 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
         App.getInstance().getTaskDao().deleteTask(list.get(pos));
         list.remove(pos);
         notifyItemRemoved(pos);
-
     }
 
     public void updateModel(int pos, TaskModel model) {
