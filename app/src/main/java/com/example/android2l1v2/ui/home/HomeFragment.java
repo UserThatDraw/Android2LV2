@@ -70,7 +70,6 @@ public class HomeFragment extends Fragment implements OnClickInterface {
     public void onCreateOptionsMenu(@NonNull @NotNull Menu menu, @NonNull @NotNull MenuInflater inflater) {
         inflater.inflate(R.menu.main, menu);
         super.onCreateOptionsMenu(menu, inflater);
-
     }
 
     public View onCreateView(@NonNull LayoutInflater inflater,
