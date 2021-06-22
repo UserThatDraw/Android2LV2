@@ -31,4 +31,12 @@
         android:name="com.example.android2l1v2.ui.home.FormFragment"
         android:label="fragment_form"
         tools:layout="@layout/fragment_form" />
+    <fragment android:id="@+id/fragment_auth"
+        android:label="fragment_auth"
+        android:name="com.example.android2l1v2.ui.auth.AuthFragment"
+        tools:layout="@layout/fragment_auth">
+        <action
+            android:id="@+id/action_fragment_auth_to_nav_home"
+            app:destination="@id/nav_home" />
+    </fragment>
 </navigation>

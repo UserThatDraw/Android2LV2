@@ -14,8 +14,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.android2l1v2.MainActivity;
 import com.example.android2l1v2.R;
 import com.example.android2l1v2.databinding.FragmentAuthBinding;
+import com.example.android2l1v2.ui.home.HomeFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseException;
@@ -96,6 +98,7 @@ public class AuthFragment extends Fragment {
 
                         FirebaseUser user = task.getResult().getUser();
                         NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main);
+                        navController.navigate(R.id.action_fragment_auth_to_nav_home);
                         // Update UI
                     } else {
                         // Sign in failed, display a message and update the UI
@@ -126,7 +129,7 @@ public class AuthFragment extends Fragment {
 
     private void CheckCodeSms() {
         String smsCode = binding.edForCode.getText().toString().trim();
-        if (TextUtils.isEmpty(smsCode) || smsCode.length() < 6){
+        if (TextUtils.isEmpty(smsCode) || smsCode.length() > 5){
             binding.edForCode.setError("Input sms code correct!");
             return;
         }

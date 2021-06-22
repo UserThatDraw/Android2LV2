@@ -39,7 +39,8 @@ public class MainActivity extends AppCompatActivity {
         setSupportActionBar(binding.appBarMain.toolbar);
 
         if (FirebaseAuth.getInstance().getCurrentUser() == null){
-
+            NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment_content_main);
+         navController.navigate(R.id.fragment_auth);
         }
 
         DrawerLayout drawer = binding.drawerLayout;

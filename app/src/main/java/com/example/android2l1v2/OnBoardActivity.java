@@ -73,6 +73,7 @@ public class OnBoardActivity extends AppCompatActivity {
         if (showOnBoard){
             Intent intent = new Intent(OnBoardActivity.this, MainActivity.class);
             startActivity(intent);
+            finish();
         }
     }
 
@@ -84,6 +85,7 @@ public class OnBoardActivity extends AppCompatActivity {
                 startActivity(intent);
                 SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(OnBoardActivity.this);
                 pref.edit().putBoolean("showOnBoard", true).apply();
+                finish();
             }
         });
 
@@ -94,6 +96,7 @@ public class OnBoardActivity extends AppCompatActivity {
                 startActivity(intent);
                 SharedPreferences pref = PreferenceManager.getDefaultSharedPreferences(OnBoardActivity.this);
                 pref.edit().putBoolean("showOnBoard", true).apply();
+                finish();
             }
         });
     }
