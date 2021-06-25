@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.android2l1v2.App;
 import com.example.android2l1v2.R;
 import com.example.android2l1v2.TaskModel;
+import com.example.android2l1v2.ui.ChatModel;
 import com.example.android2l1v2.ui.OnClickInterface;
 
 import org.jetbrains.annotations.NotNull;
@@ -23,6 +24,7 @@ import java.util.List;
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     public OnClickInterface onClickInterface;
     private ArrayList<TaskModel> list;
+    private ArrayList<ChatModel> chat;
     private ArrayList<TaskModel> filteredData;
     public boolean isList;
 
@@ -81,10 +83,11 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
 
     public class ViewHolder extends RecyclerView.ViewHolder {
 
-        TextView title, desc, time;
+        TextView title, desc, time, chat;
 
         public ViewHolder(@NonNull @NotNull View itemView) {
             super(itemView);
+            chat = itemView.findViewById(R.id.chat_item_txt);
             title = itemView.findViewById(R.id.title_item);
             desc = itemView.findViewById(R.id.desc_item);
             time = itemView.findViewById(R.id.time_item);

@@ -56,6 +56,8 @@ public class MainActivity extends AppCompatActivity {
         navController.addOnDestinationChangedListener((controller, destination, arguments) -> {
             if (destination.getId() == R.id.formFragment) {
                 binding.appBarMain.fab.hide();
+            }else if (destination.getId() == R.id.nav_gallery){
+                binding.appBarMain.fab.hide();
             } else {
                 binding.appBarMain.fab.show();
             }
