@@ -17,6 +17,7 @@ import androidx.lifecycle.ViewModelProvider;
 import com.example.android2l1v2.R;
 import com.example.android2l1v2.TaskModel;
 import com.example.android2l1v2.databinding.FragmentGalleryBinding;
+import com.example.android2l1v2.ui.ChatModel;
 import com.example.android2l1v2.ui.OnClickInterface;
 import com.example.android2l1v2.ui.home.HomeAdapter;
 import com.example.android2l1v2.ui.home.HomeFragment;
@@ -29,7 +30,9 @@ import com.google.firebase.firestore.QuerySnapshot;
 
 import org.jetbrains.annotations.NotNull;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GalleryFragment extends Fragment implements OnClickInterface {
@@ -39,11 +42,13 @@ public class GalleryFragment extends Fragment implements OnClickInterface {
     private FirebaseFirestore firestore;
     HomeAdapter adapter;
     Boolean isList = true;
+    List<TaskModel> list = new ArrayList<>();
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
         binding = FragmentGalleryBinding.inflate(inflater, container, false);
         firestore = FirebaseFirestore.getInstance();
+        adapter = new HomeAdapter(isList, GalleryFragment.this);
         initRec();
         setupFirestore();
         getDataFirestore();
@@ -51,7 +56,6 @@ public class GalleryFragment extends Fragment implements OnClickInterface {
     }
 
     private void initRec() {
-        adapter = new HomeAdapter(isList, GalleryFragment.this);
         binding.chatRec.setAdapter(adapter);
     }
 
@@ -61,10 +65,14 @@ public class GalleryFragment extends Fragment implements OnClickInterface {
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<QuerySnapshot> task) {
+                        list.clear();
                         if (task.isSuccessful()) {
                             for (QueryDocumentSnapshot document : task.getResult()) {
                                 Log.d("TAG", document.getId() + " => " + document.getData());
+                                TaskModel taskModel = new TaskModel((""),document.getString("msg"), "");
+                                list.add(taskModel);
                             }
+                            adapter.addListOfModel(list);
                         } else {
                             Log.w("TAG", "Error getting documents.", task.getException());
                         }
@@ -82,6 +90,9 @@ public class GalleryFragment extends Fragment implements OnClickInterface {
                 if (task.isSuccessful()) {
                     Log.e("TAG", "setupFirestore: success");
                     Toast.makeText(requireActivity(), "Message has been delivered to Firestore", Toast.LENGTH_SHORT).show();
+                    TaskModel taskModel = new TaskModel((""),binding.inputEdittext.getText().toString(), "");
+                    binding.inputEdittext.setText("");
+                    list.add(taskModel);
                 } else {
                     Log.e("TAG", "setupFirestore: error " + task.toString());
                     Toast.makeText(requireActivity(), "Message hasn`t been delivered to Firestore", Toast.LENGTH_SHORT).show();

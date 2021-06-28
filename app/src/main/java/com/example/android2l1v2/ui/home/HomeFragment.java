@@ -37,6 +37,7 @@ public class HomeFragment extends Fragment implements OnClickInterface {
     private FragmentHomeBinding binding;
     HomeAdapter adapter;
     Boolean isList = true;
+    private int position;
     private List<TaskModel> modelList = new ArrayList<>();
 
     @Override
@@ -121,9 +122,12 @@ public class HomeFragment extends Fragment implements OnClickInterface {
                     @Override
                     public void onFragmentResult(@NonNull @NotNull String requestKey, @NonNull @NotNull Bundle result) {
                         TaskModel model = (TaskModel) result.getSerializable("model");
+                        TaskModel mod = (TaskModel) result.getSerializable("upmodel");
                         if (model != null) {
-                            adapter.addModel(model);
                             App.getInstance().getTaskDao().insertAll(model);
+                            adapter.addModel(model);
+                        }else{
+                            adapter.updateModel(position,mod);
                         }
                     }
                 });
@@ -142,6 +146,7 @@ public class HomeFragment extends Fragment implements OnClickInterface {
 
     @Override
     public void onItemClick(int position, TaskModel model) {
+        this.position = position;
         Bundle bundle = new Bundle();
         bundle.putSerializable("mod", model);
         NavController navController = Navigation.findNavController(requireActivity(), R.id.nav_host_fragment_content_main);
