@@ -24,7 +24,6 @@ import java.util.List;
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.ViewHolder> {
     public OnClickInterface onClickInterface;
     private ArrayList<TaskModel> list;
-    private ArrayList<ChatModel> chat;
     private ArrayList<TaskModel> filteredData;
     public boolean isList;
 
